@@ -8,6 +8,10 @@ function App() {
   const [isLoading, setisLoading] = useState(false);
   const [items, setItems] = useState([]);
 
+  // if (localStorage.getItem("carrito") === null) {
+  //   localStorage.setItem("carrito", JSON.stringify([]));
+  // }
+
   useEffect(() => {
     fetchItems();
   }, []);
@@ -22,7 +26,7 @@ function App() {
       .catch(error => seterror(error))
       .finally(() => setisLoading(false));
   };
-  console.log(items);
+  // console.log(items);
 
   return (
     <div className="app">
