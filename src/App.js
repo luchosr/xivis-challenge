@@ -42,6 +42,7 @@ function App() {
           items.map(item => (
             <Card
               key={item.index}
+              id={item.index}
               picture={item.picture}
               price={item.price}
               stock={item.stock}

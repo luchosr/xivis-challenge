@@ -11,7 +11,7 @@ a {
 .app {
   text-align: center;
   height: 100vh;
-  background-color: antiquewhite;
+  background-color: #f0f0f000;
 }
 
 .app__navbar {
@@ -21,6 +21,7 @@ a {
   flex-direction: row;
   justify-content: space-between;
   padding: 0 15px 0 45px;
+  margin-bottom: 10px;
 }
 .app__navbar__title {
   margin-top: 10px;
@@ -29,33 +30,47 @@ a {
   margin: 10px 30px 10px 5px;
 }
 .app__itemsList {
-  margin: 2% 15% 0 15%;
-  height: 100vh;
+  margin: 0 auto;
+  width: 80vw;
+  height: 80%;
+  max-height: 100%;
   overflow: auto;
   display: grid;
-  grid-template-columns: 250px 250px 250px;
-  grid-template-rows: 300px 300px 300px 300px 300px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, auto));
+  grid-auto-rows: minmax(500px, auto);
   grid-gap: 15px;
 }
 .card {
-  border: 1px solid black;
+  border: 1px solid rgb(216, 216, 216);
   margin: 0 auto;
   display: block;
-  /* height: 350px; */
-  /* width: 250px; */
   display: flex;
   flex-direction: column;
 }
 .card__img {
   background-size: cover;
-  border-bottom: 3px solid antiquewhite;
+  border-bottom: 3px solid #f0f0f000;
 }
 .card__img img {
   width: 100%;
 }
 .card__description {
+  height: 100px;
   background-color: white;
   display: flex;
   flex-direction: row;
-  height: 10%;
+  justify-content: space-around;
+  align-items: center;
+  justify-items: center;
+}
+.card__description__adder {
+  background-color: red;
+  color: white;
+  height: 40px;
+  width: 120px;
+  font-size: 15px;
+  border-radius: 5px;
+}
+.card__description__input {
+  height: 20px;
 }

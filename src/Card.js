@@ -1,20 +1,21 @@
 import React from "react";
 
-const Card = props => {
+const Card = ({ id, picture, price, stock }) => {
   return (
     <li className="card">
       <div className="card__img">
-        <img src={props.picture} alt="item " />
+        <img src={picture} alt="item " />
       </div>
       <div className="card__description">
-        <h3>{props.price}</h3>
+        <h3>{price}</h3>
         <input
+          className="card__description__input"
           type="number"
           id="stock"
           name="stock"
-          placeholder="0"
-          min="0"
-          max={props.stock}
+          placeholder="1"
+          min="1"
+          max={stock}
         />
         <button className="card__description__adder">Agregar al carrito</button>
       </div>
