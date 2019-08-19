@@ -1,11 +1,18 @@
 import React, { useState } from "react";
-const Card = ({ id, picture, price, stock }) => {
+const Card = ({ id, picture, price, stock, name, description }) => {
   const [carrito, setCarrito] = useState(
     JSON.parse(localStorage.getItem("carrito"))
   );
 
   const agregarAlCarrito = () => {
-    const item = { id: id, picture: picture, price: price, stock: stock };
+    const item = {
+      id: id,
+      picture: picture,
+      price: price,
+      stock: stock,
+      description: description,
+      name: name
+    };
     if (carrito === null) {
       localStorage.setItem("carrito", JSON.stringify([item]));
     } else {
@@ -13,16 +20,31 @@ const Card = ({ id, picture, price, stock }) => {
     }
     setCarrito(JSON.parse(localStorage.getItem("carrito")));
   };
-  console.log("carrito queda como ", carrito);
-  console.log("el storage queda como ", localStorage.getItem("carrito"));
-  // console.log("carrito2 es ", carrito);
+  const guardarArticulo = () => {
+    const articulo = {
+      id: id,
+      picture: picture,
+      price: price,
+      stock: stock,
+      description: description,
+      name: name
+    };
+    localStorage.setItem("articulo", JSON.stringify(articulo));
+  };
   return (
     <li className="card">
       <div className="card__img">
-        <img src={picture} alt="item " />
+        <a href="/article" onClick={guardarArticulo}>
+          {" "}
+          <img src={picture} alt="item " />
+        </a>
       </div>
       <div className="card__description">
-        <h3>{price}</h3>
+        <div className="card__pricing">
+          <h2>{name}</h2>
+          <h3>{price}</h3>
+        </div>
+
         <input
           className="card__description__input"
           type="number"
@@ -33,7 +55,7 @@ const Card = ({ id, picture, price, stock }) => {
           max={stock}
         />
         <button className="card__description__adder" onClick={agregarAlCarrito}>
-          Agregar al carrito
+          Add to cart{" "}
         </button>
       </div>
     </li>

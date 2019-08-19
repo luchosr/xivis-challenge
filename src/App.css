@@ -11,7 +11,7 @@ a {
 .app {
   text-align: center;
   height: 100vh;
-  background-color: #f0f0f000;
+  background-color: #e6e5e5;
 }
 
 .app__navbar {
@@ -31,22 +31,23 @@ a {
 }
 .app__itemsList {
   margin: 0 auto;
-  width: 80vw;
+  width: 70vw;
   height: 80%;
   max-height: 100%;
   overflow: auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, auto));
-  grid-auto-rows: minmax(500px, auto);
-  grid-gap: 15px;
+  grid-auto-rows: minmax(380px, auto);
+  grid-gap: 20px;
 }
 .card {
-  border: 1px solid rgb(216, 216, 216);
+  border: 1px solid #d8d8d8;
   margin: 0 auto;
   display: block;
   display: flex;
   flex-direction: column;
 }
+
 .card__img {
   background-size: cover;
   border-bottom: 3px solid #f0f0f000;
@@ -63,6 +64,12 @@ a {
   align-items: center;
   justify-items: center;
 }
+.card__pricing {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 70px;
+}
 .card__description__adder {
   background-color: red;
   color: white;
@@ -73,4 +80,77 @@ a {
 }
 .card__description__input {
   height: 20px;
+}
+.article {
+  background-color: white;
+  width: 80%;
+  height: 65%;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #d8d8d8;
+}
+.article__description {
+  padding-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.article__description p {
+  text-align: justify;
+  width: 80%;
+}
+.article__img {
+  display: flex;
+  width: 220%;
+}
+.article__img img {
+  width: 100%;
+}
+.article__events {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.cart__list {
+  height: 70vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 20px auto;
+}
+.cart__list__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  border-bottom: 1px solid #bfbfbf;
+}
+.cart__item__img {
+  width: 48px;
+  height: 48px;
+}
+.cart__item__img img {
+  width: 100%;
+}
+.cart__item__description {
+  display: flex;
+  flex-direction: row;
+}
+
+.cart__item__description__price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.cart__item__description h3,
+.cart__item__description__price h3 {
+  padding: 10px 20px;
+}
+.cart__item__description__price i {
+  margin: 10px;
 }
