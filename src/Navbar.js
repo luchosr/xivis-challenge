@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "./App.css";
+import { link } from "fs";
 
 const Navbar = () => {
   const [carrito, setCarrito] = useState(
@@ -9,15 +11,16 @@ const Navbar = () => {
 
   return (
     <div className="app__navbar">
-      <h1 className="app__navbar__title">
-        <a href="/">e-Commerece</a>
-      </h1>
-      <a href="/cart" style={{ display: "block", paddingTop: "15px" }}>
+      <Link to="/">
+        <h1 className="app__navbar__title">e-Commerece</h1>
+      </Link>
+
+      <Link to="/cart">
         <i className="app__navbar__icon">
           {carrito !== null && carrito.length}
           <FaShoppingCart size={30} />
         </i>
-      </a>
+      </Link>
     </div>
   );
 };

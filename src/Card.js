@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 const Card = ({ id, picture, price, stock, name, description }) => {
   const [carrito, setCarrito] = useState(
     JSON.parse(localStorage.getItem("carrito"))
@@ -34,10 +35,10 @@ const Card = ({ id, picture, price, stock, name, description }) => {
   return (
     <li className="card">
       <div className="card__img">
-        <a href="/article" onClick={guardarArticulo}>
+        <Link to="/article">
           {" "}
-          <img src={picture} alt="item " />
-        </a>
+          <img src={picture} alt="item " onClick={guardarArticulo} />
+        </Link>
       </div>
       <div className="card__description">
         <div className="card__pricing">
