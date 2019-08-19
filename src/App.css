@@ -40,6 +40,9 @@ a {
   grid-auto-rows: minmax(380px, auto);
   grid-gap: 20px;
 }
+.app__itemsList::-webkit-scrollbar {
+  display: none;
+}
 .card {
   border: 1px solid #d8d8d8;
   margin: 0 auto;
@@ -61,8 +64,9 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-end;
   justify-items: center;
+  padding-bottom: 10px;
 }
 .card__pricing {
   display: flex;
@@ -103,7 +107,7 @@ a {
 }
 .article__img {
   display: flex;
-  width: 220%;
+  width: 90%;
 }
 .article__img img {
   width: 100%;
