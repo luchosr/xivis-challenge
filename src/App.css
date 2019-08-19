@@ -76,6 +76,7 @@ a {
   height: 70px;
 }
 .card__description__adder {
+  font-weight: bold;
   background-color: red;
   color: white;
   height: 40px;
