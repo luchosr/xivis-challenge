@@ -1,19 +1,22 @@
 import React, { useState } from "react";
+import { useCartActions, useCart } from "./cart/hooks";
 
 const Cart = () => {
-  const [cart, setCart] = useState(JSON.parse(localStorage.getItem("carrito")));
-  const [carrito, setCarrito] = useState(!(cart >= 0));
-  // ---> https://blog.campvanilla.com/javascript-the-curious-case-of-null-0-7b131644e274
+  const cart = useCart();
+  const { add, remove } = useCartActions();
 
+  console.log("cart es al final ", { cart });
   return (
     <div>
       <div className="cart__bar">
-        <h2>Items en tu carrito</h2>
+        <h2>Cart</h2>
       </div>
 
       <ul className="cart__list">
-        {cart >= 0 && <li>No hay items en tu carrito</li>}
-        {carrito &&
+        {cart.length === 0 && (
+          <li> No hay items en tu carrito hasta el momento </li>
+        )}
+        {cart &&
           cart.map(item => (
             <li className="cart__list__item">
               <div className="cart__item__description">
@@ -24,7 +27,7 @@ const Cart = () => {
               </div>
               <div className="cart__item__description__price">
                 <h3>{item.price}</h3>
-                <i>X</i>
+                <i onClick={remove}> X</i>
               </div>
             </li>
           ))}

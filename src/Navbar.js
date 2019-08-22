@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./App.css";
-import { link } from "fs";
+import { useCart } from "./cart/hooks";
 
 const Navbar = () => {
-  const [carrito, setCarrito] = useState(
-    JSON.parse(localStorage.getItem("carrito"))
-  );
+  const carrito = useCart();
 
   return (
     <div className="app__navbar">

@@ -1,18 +1,26 @@
 import React from "react";
-
-// titulo
-// url img
-//description
-// precio
-// stock
+import { useCartActions, useCart } from "./cart/hooks";
 const Article = () => {
   const article = JSON.parse(localStorage.getItem("articulo"));
-  const { price, stock, name, picture, description } = article;
+  const { price, stock, name, picture, description, id } = article;
 
   console.log(
     "el articulo queda ",
     JSON.parse(localStorage.getItem("articulo"))
   );
+  const { add, remove } = useCartActions();
+
+  const agregarAlCarrito = () => {
+    const item = {
+      id: id,
+      picture: picture,
+      price: price,
+      stock: stock,
+      description: description,
+      name: name
+    };
+    add(item);
+  };
   return (
     <div className="article">
       <div className="article__img">
@@ -35,8 +43,8 @@ const Article = () => {
           <button
             className="card__description__adder"
             style={{ margin: "20px" }}
+            onClick={agregarAlCarrito}
           >
-            {" "}
             Add to cart
           </button>
         </div>

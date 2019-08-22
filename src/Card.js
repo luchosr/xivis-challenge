@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+
+import { useCartActions } from "./cart/hooks";
+
 const Card = ({ id, picture, price, stock, name, description }) => {
   const [carrito, setCarrito] = useState(
     JSON.parse(localStorage.getItem("carrito"))
   );
+  const { add, remove } = useCartActions();
 
   const agregarAlCarrito = () => {
     const item = {
@@ -14,12 +18,7 @@ const Card = ({ id, picture, price, stock, name, description }) => {
       description: description,
       name: name
     };
-    if (carrito === null) {
-      localStorage.setItem("carrito", JSON.stringify([item]));
-    } else {
-      localStorage.setItem("carrito", JSON.stringify([...carrito, item]));
-    }
-    setCarrito(JSON.parse(localStorage.getItem("carrito")));
+    add(item);
   };
   const guardarArticulo = () => {
     const articulo = {
