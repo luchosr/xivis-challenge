@@ -37,6 +37,8 @@ const ItemsList = () => {
             description={item.description}
           />
         ))}
+      {error && <h2 style={{ color: "red" }}>{error}</h2>}
+      {isLoading && <h2 style={{ color: "gray" }}>Loading ....</h2>}
     </ul>
   );
 };

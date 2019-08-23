@@ -11,9 +11,8 @@ const CartProvider = ({ children }) => {
     setCart(cart => cart.concat(item));
   }
 
-  function remove(id) {
-    // setCart(cart => cart.filter(item => item.id === id));
-    cart.splice(id, 1);
+  function remove(index) {
+    cart.splice(index, 1);
     setCart([...cart]);
     localStorage.setItem("carrito", JSON.stringify([...cart]));
   }

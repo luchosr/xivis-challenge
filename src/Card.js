@@ -7,16 +7,24 @@ const Card = ({ id, picture, price, stock, name, description }) => {
   const [carrito, setCarrito] = useState(
     JSON.parse(localStorage.getItem("carrito"))
   );
+  const [ammount, setAmmount] = useState(1);
   const { add, remove } = useCartActions();
+
+  const handleNumber = event => {
+    setAmmount(event.target.value);
+  };
+
+  console.log("la id del articulo es ", id);
 
   const agregarAlCarrito = () => {
     const item = {
       id: id,
       picture: picture,
-      price: price,
+      price: Number(price.replace(/[^0-9.-]+/g, "")),
       stock: stock,
       description: description,
-      name: name
+      name: name,
+      ammount: ammount
     };
     add(item);
   };
@@ -24,10 +32,11 @@ const Card = ({ id, picture, price, stock, name, description }) => {
     const articulo = {
       id: id,
       picture: picture,
-      price: price,
+      price: Number(price.replace(/[^0-9.-]+/g, "")),
       stock: stock,
       description: description,
-      name: name
+      name: name,
+      ammount: ammount
     };
     localStorage.setItem("articulo", JSON.stringify(articulo));
   };
@@ -53,6 +62,8 @@ const Card = ({ id, picture, price, stock, name, description }) => {
           placeholder="1"
           min="1"
           max={stock}
+          value={ammount}
+          onChange={handleNumber}
         />
         <button className="card__description__adder" onClick={agregarAlCarrito}>
           Add to cart{" "}

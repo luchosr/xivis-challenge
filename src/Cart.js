@@ -4,8 +4,12 @@ import { useCartActions, useCart } from "./cart/hooks";
 const Cart = () => {
   const cart = useCart();
   const { add, remove } = useCartActions();
+  const [total, setTotal] = useState([]);
 
-  console.log("cart es al final ", { cart });
+  const check = cart.reduce((prev, curr) => {
+    return prev + curr.price * curr.ammount;
+  }, 0);
+
   return (
     <div>
       <div className="cart__bar">
@@ -13,9 +17,7 @@ const Cart = () => {
       </div>
 
       <ul className="cart__list">
-        {cart.length === 0 && (
-          <li> No hay items en tu carrito hasta el momento </li>
-        )}
+        {cart.length === 0 && <li> Tu carrito está vacío. </li>}
         {cart &&
           cart.map(item => (
             <li className="cart__list__item">
@@ -26,12 +28,14 @@ const Cart = () => {
                 <h3>{item.name}</h3>
               </div>
               <div className="cart__item__description__price">
-                <h3>{item.price}</h3>
-                <i onClick={remove}> X</i>
+                <h3> {item.ammount} * </h3>
+                <h3>$ {item.price}</h3>
+                <i onClick={remove}> delete</i>
               </div>
             </li>
           ))}
       </ul>
+      <h2>total: $ {Math.round(check * 100) / 100} </h2>
     </div>
   );
 };

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCartActions, useCart } from "./cart/hooks";
 const Article = () => {
+  const [ammount, setAmmount] = useState(1);
   const article = JSON.parse(localStorage.getItem("articulo"));
   const { price, stock, name, picture, description, id } = article;
 
@@ -10,6 +11,10 @@ const Article = () => {
   );
   const { add, remove } = useCartActions();
 
+  const handleNumber = event => {
+    setAmmount(event.target.value);
+  };
+
   const agregarAlCarrito = () => {
     const item = {
       id: id,
@@ -17,7 +22,8 @@ const Article = () => {
       price: price,
       stock: stock,
       description: description,
-      name: name
+      name: name,
+      ammount: ammount
     };
     add(item);
   };
@@ -39,6 +45,8 @@ const Article = () => {
             placeholder="1"
             min="1"
             max={stock}
+            value={ammount}
+            onChange={handleNumber}
           />
           <button
             className="card__description__adder"
